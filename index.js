@@ -201,7 +201,7 @@ const artists = [
   }
 ]
 
-const clone = artists.slice(0)
+//const clone = artists.slice(0)
 
 // 🖌🖼 M V P 🖼🖌 //
 
@@ -253,17 +253,18 @@ Use copy to do the following:
 🌟 EXAMPLE of return: ["Amedeo Modigliani", "Vasiliy Kandinskiy", "Diego Rivera"....]
 */
 
-function listOfNames(oldArray, newArray) {
+  
+function listOfNames(oldArray) {
+    const onlyNames = [];
   for(let i = 0; i < oldArray.length; i++){
-    if(oldArray[i] === newArray){
-      newArray.splice(i,1);
+      onlyNames.push(oldArray[i].name)
       
     }
-  }
+    return onlyNames;
 }
+  listOfNames(artists)
 
-listOfNames(artists,clone[0].name)
-
+  
 
 
 
@@ -276,9 +277,17 @@ Use removeArtist to do the following:
 5. Return the resulting copied array
 🌟 EXAMPLE: if removeArtist is invoked with the artists array and the number 0, it will return the resulting array with Amedeo Modigliani removed from our dataset. */
 
-function removeArtist(/*Your Code Here*/) {
-  /*Your Code Here*/
+function removeArtist(array, index) {
+  delete array[index].name;
+  console.log(array);
+  return array;
 }
+
+removeArtist(artists, 19) 
+
+
+
+
 
 
 
@@ -297,10 +306,11 @@ Use addArtist to do the following:
 4. Return the array
 🌟 EXAMPLE: Invoking addArtist(artists, 'John Doe', '1988-2022', 'Full Stack Development', 'African American', 'I have a background in customer service at Big Retail Chain. I am attending BloomTech to become a Frontend Developer.') should return the artists array with the above object added to the end of the array. */
 
-function addArtist(/*Your Code Here*/) {
-  /*Your Code Here*/
+function addArtist(array, name, years, genre, nationality, bio) {
+  array.push({name, years, genre, nationality, bio})
+ return array
 }
-
+addArtist(artists, 'Jordon', '2001 - 2022', 'Web57', 'White', 'I used to spend all my free time playing video games. Now I utulize my time in web57 to become a WEBDEV :). ')
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 7: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -343,9 +353,17 @@ Use artistByCountry to do the following:
 🌟 EXAMPLE: Invoking artistByCountry(artists, 'Spanish') will return: [ 'Salvador Dali', 'Pablo Picasso', 'Francisco Goya']
 */
 
-function artistByCountry(/*Your Code Here*/){
-  /*Your Code Here*/
+function artistByCountry(array, nationality){
+  const newArray = [];
+  for(let i = 0; i < array.length; i++){
+    if(array[i].nationality === nationality){
+      newArray.push(array[i].name);
+      }
+  }
+  return newArray
 }
+
+console.log(artistByCountry(artists,"Spanish"))
 
 
 
